@@ -1,0 +1,18 @@
+setup mysql in docker 
+
+
+step 1 create docker volume
+
+docker volume create --name db_volume --opt type=none --opt device=/home/vishu/Documents/Docker_Volume/Mysql --opt o=bind
+
+
+Step 2 attach this volume in mysql and start container
+
+docker container run  -it -p 3306:3306 -v db_volume:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql
+
+
+
+
+Setup RabiitMQ 
+
+docker run -d --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
